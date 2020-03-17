@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LightComponentComponent } from './light-component.component';
+import { LightComponent } from './light.component';
 
 describe('LightComponentComponent', () => {
-  let component: LightComponentComponent;
-  let fixture: ComponentFixture<LightComponentComponent>;
+  let component: LightComponent;
+  let fixture: ComponentFixture<LightComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LightComponentComponent ]
+      declarations: [ LightComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LightComponentComponent);
+    fixture = TestBed.createComponent(LightComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

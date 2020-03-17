@@ -2,12 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LightComponentComponent } from './light-component/light-component.component';
+import { LightComponent } from './light/light.component';
+import { LightsComponent } from './lights/lights.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LightComponentComponent
+    LightComponent,
+    LightsComponent
   ],
   imports: [
     BrowserModule
