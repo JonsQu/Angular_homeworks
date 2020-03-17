@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-light',
@@ -10,7 +10,8 @@ export class LightComponent implements OnInit {
   constructor() {
     
   }
-
+  @Output() lightBulbClicked : EventEmitter<boolean> = new EventEmitter();
+  
   ngOnInit(): void {
     console.log('OnInit');
     console.log(this.isOn);
@@ -24,6 +25,7 @@ export class LightComponent implements OnInit {
       this.isOn = false;
       this.path = 'assets/off.png';
     }
+    this.lightBulbClicked.emit(this.isOn);
   }
   ngOnChanges(){
     if(this.isOn){
