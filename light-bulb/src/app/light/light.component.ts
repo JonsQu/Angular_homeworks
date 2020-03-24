@@ -6,11 +6,12 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 })
 export class LightComponent implements OnInit {
   @Input() isOn : boolean;
+  @Input() id : number;
   path : string;
   constructor() {
     
   }
-  @Output() lightBulbClicked : EventEmitter<boolean> = new EventEmitter();
+  @Output() lightBulbClicked : EventEmitter<number> = new EventEmitter();
   
   ngOnInit(): void {
     console.log('OnInit');
@@ -18,14 +19,14 @@ export class LightComponent implements OnInit {
     
   }
   toggleLights(){
-    if(!this.isOn){
+    /*if(!this.isOn){
       this.isOn = true;
       this.path = 'assets/on.png';
     }else{
       this.isOn = false;
       this.path = 'assets/off.png';
-    }
-    this.lightBulbClicked.emit(this.isOn);
+    }*/
+    this.lightBulbClicked.emit(this.id);
   }
   ngOnChanges(){
     if(this.isOn){

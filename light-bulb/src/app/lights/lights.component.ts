@@ -2,17 +2,27 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-lights',
-  template: `<app-light (lightBulbClicked)="clicked1($event)" [isOn]="toggles[0]"></app-light>
-            <app-light (lightBulbClicked)="clicked2($event)" [isOn]="toggles[1]"></app-light>
-            <app-light (lightBulbClicked)="clicked3($event)" [isOn]="toggles[2]"></app-light>` 
+  template: `<app-light *ngFor="let boVal of toggles; let i = index"
+            (lightBulbClicked)="clicked($event)" [isOn]="boVal" [id]="i"></app-light>` 
 })
 export class LightsComponent implements OnInit {
-  toggles : boolean[] = [false, true, false];
+  toggles : boolean[] = [false, true, false, true, false, true];
   isAllOn : boolean;
   @Output() lightsSituation : EventEmitter<boolean> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+  clicked(id : number){
+    this.toggles[id] = !this.toggles[id];
+    this.isAllOn = true;
+    for(let i of this.toggles){
+      console.log(i);
+      if(i === false){
+        this.isAllOn = false;
+      }
+    }
+    this.lightsSituation.emit(this.isAllOn);
   }
 
   clicked1(event){
